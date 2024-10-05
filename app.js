@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const cors=require("cors")
-const port = 3000
+const port = process.env.PORT || 3000
 const bodyParser = require('body-parser')
 const session = require('express-session')
 // parse application/x-www-form-urlencoded
@@ -23,7 +23,7 @@ app.use(session(sess))
 app.use(bodyParser.json())
 app.use(cors(
   {
-    origin: 'http://localhost:5173',
+    origin: preocess.env.ORIGIN ||     'http://localhost:5173',
     credentials: true
   }
 
@@ -35,10 +35,10 @@ app.get('/', (req, res) => {
 
 const mysql      = require('mysql2/promise');
 const connection = mysql.createPool({
-  host     : 'localhost',
-  user     : 'root',
-  password : '',
-  database : 'proyectotienda'
+  host     : process.env.DB_HOST ||  'localhost',
+  user     : process.env.DB_USER ||  'root',
+  password :process.env.DB_PASSWORD ||   '',
+  database : process.env.DB_NAME ||  'proyectotienda'
 });
  
 
@@ -73,7 +73,7 @@ app.post('/productos', async(req, res) => {
        "INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio`, `imagen`) VALUES (NULL, ?, ?, ?, ?);",[req.body.nombre,req.body.descripcion,req.body.precio,req.body.imagen ]
     );
     // res.json(results)
-    res.redirect('http://127.0.0.1:3000/index.html')
+    res.redirect(req.get('origin')+'/index.html')
     // console.log(results); // results contains rows returned by server
     // console.log(fields); // fields contains extra meta data about results, if available
   } catch (err) {
