@@ -35,11 +35,11 @@ app.get('/', (req, res) => {
 
 const mysql = require('mysql2/promise');
 const connection = mysql.createPool({
-  host: '130.162.54.212',
-  user: 'freedb_luisa',
-  port: 3306,
-  password: '3zD6fHBH4*??qYP',
-  database: 'freedb_tiendavirtual',
+  host: 'mueku.h.filess.io',
+  user: 'tiendavirtual_tryfightis',
+  port: 3305,
+  password: '062dc9886a0f19c7cc0545a68a872a98db9bc3d6',
+  database: 'tiendavirtual_tryfightis',
   maxIdle: 1,
   connectionLimit: 1
 });
