@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
 
 const mysql = require('mysql2/promise');
 const connection = mysql.createPool({
-  host: 'sql.freedb.tech',
+  host: '130.162.54.212',
   user: 'freedb_luisa',
   port: 3306,
   password: '3zD6fHBH4*??qYP',
