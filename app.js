@@ -35,16 +35,14 @@ app.get('/', (req, res) => {
 
 const mysql      = require('mysql2/promise');
 const connection = mysql.createPool({
-  host     : process.env.DB_HOST ||  'sql.freedb.tech',
-  user     : process.env.DB_USER ||  'freedb_luisa',
+  host     : process.env.DB_HOST ||  'localhost',
+  user     : process.env.DB_USER ||  'root',
   port     : process.env.DB_PORT ||  3306,
-  password :process.env.DB_PASSWORD ||   '3zD6fHBH4*??qYP',
-  database : process.env.DB_NAME ||  'freedb_tiendavirtual',
-  ssl: {
-    rejectUnauthorized: false
-  }
+  password :process.env.DB_PASSWORD ||   '',
+  database : process.env.DB_NAME ||  'proyectotienda'
 });
  
+
 // const connection = mysql.createPool({
 //   host: 'mueku.h.filess.io',
 //   user: 'tiendavirtual_tryfightis',
@@ -52,8 +50,6 @@ const connection = mysql.createPool({
 //   password: '062dc9886a0f19c7cc0545a68a872a98db9bc3d6',
 //   database: 'tiendavirtual_tryfightis'
 // });
-
-
 
 app.get('/productos', async(req, res) => {
   try {
