@@ -23,7 +23,7 @@ app.use(session(sess))
 app.use(bodyParser.json())
 app.use(cors(
   {
-    origin: preocess.env.ORIGIN ||     'http://localhost:5173',
+    origin: process.env.ORIGIN ||     'http://localhost:5173',
     credentials: true
   }
 
